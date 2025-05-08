@@ -4,6 +4,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -11,6 +12,10 @@ import java.util.Date;
 
 @Component
 public class JwtUtil {
+
+
+    @Value("${jwt.secret}")  // Injecting the secret key from application.properties
+    private String secret;
 
     private Key key;
     @PostConstruct
